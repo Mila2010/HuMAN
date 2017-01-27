@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTemp">#ff40ff</color>
+    <color name="otherinfo">#9c6a9c</color>
+    <color name="colorLightPink">#e7d2e7</color>
+    <color name="colorSplash">#efe0c8</color>
+    <color name="colorGray">#9e859e</color>
+    <color name="colorPrimary_MyTheme">#e4a0f5</color>
+    <color name="colorPrimaryDark_MyTheme">#7a34ac</color>
+    <color name="colorAccent_MyTheme">#c660f5</color>
+    <color name="Gray">#908b93</color>
+    <color name="White">#ffffff</color>
+</resources>
