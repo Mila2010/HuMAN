@@ -4,8 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@mipmap/ic_launcher"
+        android:icon="@drawable/s_third_logo"
+        android:label="HuMAN"
         android:supportsRtl="true"
         android:theme="@style/HuMANTheme">
         <activity android:name=".Splashscreen">
@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu">
+        <activity android:name=".HomePage"
+            android:theme="@style/TestTheme">
 
         </activity>
 

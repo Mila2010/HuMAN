@@ -27,5 +27,12 @@
         <item name="colorAccent">@color/colorLightPink</item>
     </style>
 
+    <style name="TestTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--   your app branding color for the app bar -->
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
 
 </resources>

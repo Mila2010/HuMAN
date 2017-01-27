@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/main_menu"
+        android:actionViewClass="android.widget.ImageButton"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Main Menu"
+        >
+
+        <item android:id="@+id/restart_quiz_action"
+            android:title="Contact Us"
+
+            android:icon="@android:drawable/arrow_up_float"/>
+
+
+        <item android:id="@+id/save_score"
+            android:title="More Links"
+            android:icon="@android:drawable/arrow_up_float"/>
+
+
+
+    </item>
+</menu>
