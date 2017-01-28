@@ -25,11 +25,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-//        Fragment fragment = new NesadaFragment();
-//        Bundle args = new Bundle();
-//        // Our object is just an integer :-P
-//        args.putInt(NesadaFragment.ARG_OBJECT, i + 1);
-//        fragment.setArguments(args);
 
         switch (position) {
             case 0:
