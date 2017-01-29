@@ -38,12 +38,12 @@ public class HlViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind (Shelters shelters){
-        address.setText(shelters.getAddress());
-//        borough.setText();
-//        commDistrict.setText();
-//        homeOffice.setText();
-//        neighborhood.setText();
-//        phone.setText();
+        address.setText("Address: " + shelters.getAddress());
+        borough.setText("Borough: " + shelters.getBorough());
+        commDistrict.setText("Community Dist: " + shelters.getCommunity_district());
+        homeOffice.setText("Homebase Office: " + shelters.getHomebase_office());
+        neighborhood.setText("Neighborhood: " + shelters.getNeighborhood());
+        phone.setText("Phone: " + shelters.getPhone_number());
     }
 
 
