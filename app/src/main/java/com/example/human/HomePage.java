@@ -1,15 +1,21 @@
 package com.example.human;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.example.human.view.MapsActivity;
 
 public class HomePage extends AppCompatActivity {
 
     TabLayout mTabLayout;
+    ContactUsFragment mContactUsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,7 @@ public class HomePage extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        mContactUsFragment = new ContactUsFragment();
 
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         mTabLayout.addTab(mTabLayout.newTab().setText("Tab 1"));
@@ -65,13 +72,30 @@ public class HomePage extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()) {
+            case R.id.contact_us:
+              getSupportFragmentManager().beginTransaction().add(R.id.activity_main,mContactUsFragment).commit();
+
+                break;
+
+            case R.id.More_links:
+
+                Intent intent = new Intent(this, MapsActivity.class);
+                startActivity(intent);
+
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void removeContactUs(View view){
+
+        getSupportFragmentManager().beginTransaction().remove(mContactUsFragment).commit();
+
+    }
+
 }
