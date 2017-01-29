@@ -6,12 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.human.R;
+import com.example.human.model.Shelters;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by asiagibson on 1/29/17.
  */
 
 public class HlAdapter extends RecyclerView.Adapter<HlViewHolder> {
+
+    List<Shelters> sheltersList;
+
+    public HlAdapter(){
+        sheltersList = new ArrayList<>();
+    }
 
     @Override
     public HlViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -21,11 +31,18 @@ public class HlAdapter extends RecyclerView.Adapter<HlViewHolder> {
 
     @Override
     public void onBindViewHolder(HlViewHolder holder, int position) {
-
+            Shelters shelters = sheltersList.get(position);
+        holder.bind(shelters);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return sheltersList.size();
+    }
+
+    public void  setSheltersList(List<Shelters> mshelterList){
+        sheltersList.clear();
+        sheltersList.addAll(mshelterList);
+        notifyDataSetChanged();
     }
 }

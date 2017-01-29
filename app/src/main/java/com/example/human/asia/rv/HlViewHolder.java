@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.human.R;
+import com.example.human.model.Shelters;
 
 /**
  * Created by asiagibson on 1/29/17.
@@ -36,13 +37,13 @@ public class HlViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void bind (){
-//        address.setText();
-//        borough.setText();
-//        commDistrict.setText();
-//        homeOffice.setText();
-//        neighborhood.setText();
-//        phone.setText();
+    public void bind (Shelters shelters){
+        address.setText("Address: " + shelters.getAddress());
+        borough.setText("Borough: " + shelters.getBorough());
+        commDistrict.setText("Community Dist: " + shelters.getCommunity_district());
+        homeOffice.setText("Homebase Office: " + shelters.getHomebase_office());
+        neighborhood.setText("Neighborhood: " + shelters.getNeighborhood());
+        phone.setText("Phone: " + shelters.getPhone_number());
     }
 
 
