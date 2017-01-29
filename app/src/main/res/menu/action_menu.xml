@@ -8,13 +8,13 @@
         android:title="Main Menu"
         >
 
-        <item android:id="@+id/restart_quiz_action"
+        <item android:id="@+id/contact_us"
             android:title="Contact Us"
 
             android:icon="@android:drawable/arrow_up_float"/>
 
 
-        <item android:id="@+id/save_score"
+        <item android:id="@+id/More_links"
             android:title="More Links"
             android:icon="@android:drawable/arrow_up_float"/>
 
