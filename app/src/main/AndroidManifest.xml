@@ -44,9 +44,12 @@
 
 
 
+    <activity
+        android:name=".view.DonateWebView"
+        />
 
 
+</application>
 
-    </application>
 
 </manifest>
