@@ -27,8 +27,12 @@
 
         <activity
             android:name=".HomePage"
-            android:theme="@style/TestTheme">
+            android:theme="@style/TestTheme"/>
 
+
+        <activity
+            android:name=".view.MapsActivity"
+            android:label="@string/title_activity_maps">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,13 +42,8 @@
 
         </activity>
 
+
         <activity
-            android:name=".view.MapsActivity"
-            android:label="@string/title_activity_maps"/>
-
-
-
-    <activity
         android:name=".view.DonateWebView"
         />
 
