@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.human.view.HomelessOptionsFragment;
 import com.example.human.view.MapsActivity;
 
 public class HomePage extends AppCompatActivity {
@@ -95,6 +96,21 @@ public class HomePage extends AppCompatActivity {
     public void removeContactUs(View view){
 
         getSupportFragmentManager().beginTransaction().remove(mContactUsFragment).commit();
+
+    }
+
+    public void showDetails(View view){
+        switch (view.getId()){
+
+            case R.id.family_shelters:
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main,new HomelessOptionsFragment())
+                .addToBackStack(null)
+                .commit();
+        break;
+        }
 
     }
 

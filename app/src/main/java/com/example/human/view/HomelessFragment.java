@@ -2,7 +2,7 @@ package com.example.human.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +27,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class HomelessFragment extends Fragment {
+public class HomelessFragment extends android.support.v4.app.Fragment {
 
     RecyclerView rv;
     HlAdapter adapter;
@@ -42,13 +42,13 @@ public class HomelessFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View itemView = inflater.inflate(R.layout.homeless_service_fragment, container, false);
+        View itemView = inflater.inflate(R.layout.hm_option_view, container, false);
 
-        rv = (RecyclerView) itemView.findViewById(R.id.recyclerview);
-        adapter = new HlAdapter();
-        rv.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.VERTICAL, false));
-        rv.setAdapter(adapter);
-
+//        rv = (RecyclerView) itemView.findViewById(R.id.recyclerview);
+//        adapter = new HlAdapter();
+//        rv.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.VERTICAL, false));
+//        rv.setAdapter(adapter);
+//
         return itemView;
 
 
@@ -57,47 +57,47 @@ public class HomelessFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        test = (TextView) view.findViewById(R.id.tab_text);
-        mRetrofit = new Retrofit.Builder().baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create()).build();
-
-        ShelterResponse shelterResponse = mRetrofit.create(ShelterResponse.class);
-
-        Call<List<Shelters>> call = shelterResponse.getShelters();
-
-        call.enqueue(new Callback<List<Shelters>>() {
-            @Override
-            public void onResponse(Call<List<Shelters>> call, Response<List<Shelters>> response) {
-
-                if (response.isSuccessful()) {
-
-                    //ResponseBody body=response.body();
-
-                    //ListOfShelters listOfShelters = response.body();
-
-                    List<Shelters> shelterses = response.body();
+       // test = (TextView) view.findViewById(R.id.tab_text);
+//        mRetrofit = new Retrofit.Builder().baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create()).build();
 //
-//                    String myresponse = shelterses.get(0).getAddress();
-
-                    Log.d(WORKING, "It is workig");
-
-                    adapter.setSheltersList(shelterses);
-                    // test.setText(shelterses.get(0).getAddress());
-
-
-                }
+//        ShelterResponse shelterResponse = mRetrofit.create(ShelterResponse.class);
+//
+//        Call<List<Shelters>> call = shelterResponse.getShelters();
+//
+//        call.enqueue(new Callback<List<Shelters>>() {
+//            @Override
+//            public void onResponse(Call<List<Shelters>> call, Response<List<Shelters>> response) {
+//
+//                if (response.isSuccessful()) {
+//
+//                    //ResponseBody body=response.body();
+//
+//                    //ListOfShelters listOfShelters = response.body();
+//
+//                    List<Shelters> shelterses = response.body();
+////
+////                    String myresponse = shelterses.get(0).getAddress();
+//
+//                    Log.d(WORKING, "It is workig");
+//
+//                    adapter.setSheltersList(shelterses);
+//                    // test.setText(shelterses.get(0).getAddress());
+//
+//
+//                }
 
             }
 
-            @Override
-            public void onFailure(Call<List<Shelters>> call, Throwable t) {
-                System.out.print("Not working");
-                Log.d(NOTWORKING, "It is not workig");
-
-            }
-        });
-
-
-    }
+//            @Override
+//            public void onFailure(Call<List<Shelters>> call, Throwable t) {
+//                System.out.print("Not working");
+//                Log.d(NOTWORKING, "It is not workig");
+//
+//            }
+//        });
+//
+//
+//    }
 }
 
 
