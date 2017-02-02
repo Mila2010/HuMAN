@@ -2,6 +2,8 @@ package com.example.human.view;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +18,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.vision.barcode.Barcode;
+
+import java.io.IOException;
+import java.util.List;
+
+import static com.example.human.R.id.map;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener,
@@ -33,7 +41,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(map);
         mapFragment.getMapAsync(this);
     }
 
@@ -52,7 +60,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
+        Barcode.GeoPoint p1 = getLocationFromAddress("1600 Amphitheatre Parkway, Mountain View, CA");
+
+        LatLng sydney = new LatLng(p1.lat, p1.lng);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         mMap.setOnMyLocationButtonClickListener(this);
@@ -91,6 +101,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+//        LatLng loc = new LatLng (location.getLatitude(), location.getLongitude());
+//        map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
         return true;
@@ -112,5 +124,34 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getFragmentManager(), "dialog");
+    }
+
+    public Barcode.GeoPoint getLocationFromAddress(String strAddress){
+
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+        Barcode.GeoPoint p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress,5);
+            if (address==null) {
+                return null;
+            }
+            Address location=address.get(0);
+
+
+            location.getLongitude();
+
+            Double latitude = location.getLatitude()* 1E6;
+            Double  longitude = location.getLongitude() * 1E6;
+
+            p1 = new Barcode.GeoPoint(2,latitude,longitude);
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return p1;
     }
 }
