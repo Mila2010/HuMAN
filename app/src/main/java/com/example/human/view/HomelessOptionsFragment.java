@@ -62,10 +62,7 @@ public class HomelessOptionsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        rv = (RecyclerView) view.findViewById(R.id.recyclerview);
-//        adapter = new HlAdapter();
-//        rv.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
-//        rv.setAdapter(adapter);
+
         mRetrofit = new Retrofit.Builder().baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create()).build();
 
         ShelterResponse shelterResponse = mRetrofit.create(ShelterResponse.class);

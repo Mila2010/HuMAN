@@ -19,19 +19,19 @@ public class HlAdapter extends RecyclerView.Adapter<HlViewHolder> {
 
     List<Shelters> sheltersList;
 
-    public HlAdapter(){
+    public HlAdapter() {
         sheltersList = new ArrayList<>();
     }
 
     @Override
     public HlViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.homeless_cardview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.homeless_cardview, parent, false);
         return new HlViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(HlViewHolder holder, int position) {
-            Shelters shelters = sheltersList.get(position);
+        Shelters shelters = sheltersList.get(position);
         holder.bind(shelters);
     }
 
@@ -40,7 +40,7 @@ public class HlAdapter extends RecyclerView.Adapter<HlViewHolder> {
         return sheltersList.size();
     }
 
-    public void  setSheltersList(List<Shelters> mshelterList){
+    public void setSheltersList(List<Shelters> mshelterList) {
         sheltersList.clear();
         sheltersList.addAll(mshelterList);
         notifyDataSetChanged();
