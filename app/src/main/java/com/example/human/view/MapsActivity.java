@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -12,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.human.R;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -60,7 +63,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        Barcode.GeoPoint p1 = getLocationFromAddress("1600 Amphitheatre Parkway, Mountain View, CA");
+        Barcode.GeoPoint p1 = getLocationFromAddress("SFO");
 
         LatLng sydney = new LatLng(p1.lat, p1.lng);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -101,7 +104,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onMyLocationButtonClick() {
         Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
-//        LatLng loc = new LatLng (location.getLatitude(), location.getLongitude());
+
+        Location userLocation = mMap.getMyLocation();
+        LatLng myLocation = null;
+        if (userLocation != null) {
+            myLocation = new LatLng(userLocation.getLatitude(),
+                    userLocation.getLongitude());
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation,
+                    mMap.getMaxZoomLevel()-5));}
+      // LatLng loc = new LatLng (location.getLatitude(), location.getLongitude());
 //        map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
         // Return false so that we don't consume the event and the default behavior still occurs
         // (the camera animates to the user's current position).
@@ -156,4 +167,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
+    protected void createLocationRequest() {
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+    }
 }

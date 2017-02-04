@@ -1,9 +1,8 @@
 package com.example.human.view;
 
-import android.support.v4.app.Fragment;;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,10 +20,11 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+
+;
 
 /**
  * Created by asiagibson on 1/30/17.
@@ -61,6 +61,8 @@ public class HomelessOptionsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        getActivity().getApplicationContext().setTheme(R.style.TestTheme);
 
 //        rv = (RecyclerView) view.findViewById(R.id.recyclerview);
 //        adapter = new HlAdapter();

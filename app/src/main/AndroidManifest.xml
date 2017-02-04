@@ -30,6 +30,8 @@
             android:theme="@style/TestTheme"/>
 
 
+
+
         <activity
             android:name=".view.MapsActivity"
             android:label="@string/title_activity_maps">
@@ -41,6 +43,9 @@
             </intent-filter>
 
         </activity>
+
+
+
 
 
         <activity
