@@ -42,11 +42,10 @@
         <activity
 
             android:name=".view.MapsActivity"
-            android:label="@string/title_activity_maps"/>
+            android:label="@string/title_activity_maps" />
 
 
-
-
+        <activity android:name=".view.DMapsActivity" />
         <activity android:name=".view.DonateWebView" />
 
 
