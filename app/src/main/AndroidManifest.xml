@@ -26,9 +26,14 @@
             android:value="@string/google_maps_key"/>
 
         <activity
+
+
+
+
+
+        <activity
             android:name=".view.MapsActivity"
             android:label="@string/title_activity_maps">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,25 +43,13 @@
 
         </activity>
 
-        <activity android:name=".Splashscreen"/>
-
+      
         <activity
-            android:name=".HomePage"
-            android:theme="@style/TestTheme"/>
-
-        <!--<intent-filter>-->
-            <!--<action android:name="android.intent.action.MAIN" />-->
-
-            <!--<category android:name="android.intent.category.LAUNCHER" />-->
-
-        <!--</intent-filter>-->
-
-        <!--</activity>-->
+        android:name=".view.DonateWebView"
+        />
 
 
+</application>
 
-
-
-    </application>
 
 </manifest>

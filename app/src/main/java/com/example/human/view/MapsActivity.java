@@ -1,19 +1,42 @@
 package com.example.human.view;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.human.R;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.vision.barcode.Barcode;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+import java.io.IOException;
+import java.util.List;
 
+import static com.example.human.R.id.map;
+
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
+        GoogleMap.OnMyLocationButtonClickListener,
+
+        ActivityCompat.OnRequestPermissionsResultCallback {
+
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private GoogleMap mMap;
+    private boolean mPermissionDenied = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +44,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(map);
         mapFragment.getMapAsync(this);
     }
 
@@ -40,15 +63,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng hss = new LatLng(40.713958, -73.984515);
-        mMap.addMarker(new MarkerOptions().position(hss).title("Marker for HSS"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(hss));
-
-        LatLng manhattan = new LatLng(40.722934,-73.974654);
-        mMap.addMarker(new MarkerOptions().position(manhattan).title("Marker for moms"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(manhattan));
 
     }
 
+    public Barcode.GeoPoint getLocationFromAddress(String strAddress){
 
+        Geocoder coder = new Geocoder(this);
+        List<Address> address;
+        Barcode.GeoPoint p1 = null;
+
+        try {
+            address = coder.getFromLocationName(strAddress,5);
+            if (address==null) {
+                return null;
+            }
+            Address location=address.get(0);
+
+
+            location.getLongitude();
+
+            Double latitude = location.getLatitude()* 1E6;
+            Double  longitude = location.getLongitude() * 1E6;
+
+            p1 = new Barcode.GeoPoint(2,latitude,longitude);
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return p1;
+    }
+
+
+    protected void createLocationRequest() {
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setInterval(10000);
+        mLocationRequest.setFastestInterval(5000);
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+                .addLocationRequest(mLocationRequest);
+    }
 }

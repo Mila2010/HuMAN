@@ -36,9 +36,9 @@ public class HomePage extends AppCompatActivity {
         mContactUsFragment = new ContactUsFragment();
 
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab 1"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Help for Homeless"));
         mTabLayout.addTab(mTabLayout.newTab().setText("Tab 2"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab 3"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Donate"));
         mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);

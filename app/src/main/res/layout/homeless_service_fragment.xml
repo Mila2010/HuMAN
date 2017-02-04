@@ -6,6 +6,14 @@
     android:id="@+id/testing"
     >
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorGray"
+        android:minHeight="?attr/actionBarSize"
+        />
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"
