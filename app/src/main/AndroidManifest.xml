@@ -20,15 +20,16 @@
         android:theme="@style/HuMANTheme">
 
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
+
+        <!--<activity android:name=".view.MapsActivity" />-->
 
 
         <activity
-            android:name=".view.MapsActivity"
-            android:label="@string/title_activity_maps">
+            android:name=".HomePage"
+            android:theme="@style/TestTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,13 +39,18 @@
 
         </activity>
 
-      
         <activity
-        android:name=".view.DonateWebView"
-        />
+
+            android:name=".view.MapsActivity"
+            android:label="@string/title_activity_maps"/>
 
 
-</application>
+
+
+        <activity android:name=".view.DonateWebView" />
+
+
+    </application>
 
 
 </manifest>
