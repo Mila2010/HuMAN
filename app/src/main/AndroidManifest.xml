@@ -19,15 +19,14 @@
         android:supportsRtl="true"
         android:theme="@style/HuMANTheme">
 
+
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
 
-        <activity android:name=".Splashscreen"/>
-
         <activity
-            android:name=".HomePage"
-            android:theme="@style/TestTheme"/>
+
 
 
 
@@ -44,10 +43,7 @@
 
         </activity>
 
-
-
-
-
+      
         <activity
         android:name=".view.DonateWebView"
         />
