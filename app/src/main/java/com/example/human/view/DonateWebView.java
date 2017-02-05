@@ -1,8 +1,8 @@
 package com.example.human.view;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 
 import com.example.human.R;
@@ -12,7 +12,7 @@ import com.example.human.R;
  * Created by Millochka on 1/29/17.
  */
 
-public class DonateWebView extends Activity {
+public class DonateWebView extends AppCompatActivity {
 
     private WebView webView;
     private static final String TARGET_URL ="MYURL" ;

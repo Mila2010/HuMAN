@@ -3,24 +3,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:id="@+id/testing"
     >
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/colorGray"
-        android:minHeight="?attr/actionBarSize"
-        />
     <TextView
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Homeless Shelters"
-        android:background="@color/cardview_dark_background"
-        android:textColor="#ffffff"
+        android:background="@color/colorGray"
+        android:textColor="#000000"
         android:textSize="25sp"
      />
 

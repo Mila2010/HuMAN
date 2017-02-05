@@ -62,7 +62,7 @@ public class HomelessOptionsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().getApplicationContext().setTheme(R.style.TestTheme);
+        //getActivity().getApplicationContext().setTheme(R.style.TestTheme);
 
 //        rv = (RecyclerView) view.findViewById(R.id.recyclerview);
 //        adapter = new HlAdapter();

@@ -24,15 +24,15 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
     }
 
     @Override
 
-    protected void onPostCreate(Bundle savedInstanceState){
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         mContactUsFragment = new ContactUsFragment();
 
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -76,9 +76,9 @@ public class HomePage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.contact_us:
-              getSupportFragmentManager().beginTransaction().add(R.id.activity_main,mContactUsFragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.activity_main, mContactUsFragment).commit();
 
                 break;
 
@@ -93,23 +93,22 @@ public class HomePage extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void removeContactUs(View view){
+    public void removeContactUs(View view) {
 
         getSupportFragmentManager().beginTransaction().remove(mContactUsFragment).commit();
 
     }
 
-    public void showDetails(View view){
-        switch (view.getId()){
-
+    public void showDetails(View view) {
+        switch (view.getId()) {
             case R.id.family_shelters:
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.activity_main,new HomelessOptionsFragment())
-                .addToBackStack(null)
-                .commit();
-        break;
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_container, new HomelessOptionsFragment())
+                        .addToBackStack(null)
+                        .commit();
+                break;
         }
 
     }
