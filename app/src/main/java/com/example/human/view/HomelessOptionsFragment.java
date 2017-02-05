@@ -6,8 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,6 +43,7 @@ public class HomelessOptionsFragment extends Fragment {
     private final String BASEURL = "https://data.cityofnewyork.us/";
     EditText searchField;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+    private SearchView mSearch;
 
 
     @Nullable
@@ -67,31 +67,48 @@ public class HomelessOptionsFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        searchField = (EditText) view.findViewById(R.id.search_shelter);
-        searchField.addTextChangedListener(new TextWatcher() {
+        mSearch=(SearchView) view.findViewById(R.id.search_shelter);
+        mSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
-             List<Shelters> temp = adapter.getSheltersList();
+            List<Shelters> temp = adapter.getSheltersList();
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                // TODO Auto-generated method stub
-
-                filter(s.toString(), temp);
+            public boolean onQueryTextSubmit(String query) {
+                filter(query.toString(), temp);
+                return true;
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-
+            public boolean onQueryTextChange(String newText) {
+                filter(newText.toString(), temp);
+                return true;
             }
         });
+
+//        searchField = (EditText) view.findViewById(R.id.search_shelter);
+//        searchField.addTextChangedListener(new TextWatcher() {
+//
+//             List<Shelters> temp = adapter.getSheltersList();
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//                // TODO Auto-generated method stub
+//
+//                filter(s.toString(), temp);
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                // TODO Auto-generated method stub
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//
+//
+//            }
+//        });
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
