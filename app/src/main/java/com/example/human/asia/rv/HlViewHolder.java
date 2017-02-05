@@ -46,11 +46,12 @@ public class HlViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View view) {
 
                 Intent intent;
-                switch (getAdapterPosition()){
+                switch (getAdapterPosition()) {
                     case 0:
                         intent = new Intent(mContext, MapsActivity.class);
                         mContext.startActivity(intent);
                         break;
+
                 }
             }
         });
