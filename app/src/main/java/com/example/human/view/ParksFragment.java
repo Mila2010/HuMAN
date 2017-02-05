@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.human.R;
 import com.example.human.model.Parks;
-import com.example.human.nesada.HlAdapterTwo;
+import com.example.human.nesada.ParksAdapter;
 import com.example.human.network.ParksResponse;
 
 import java.util.List;
@@ -26,9 +26,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * Created by Millochka on 1/27/17.
  */
-public class NesadaFragment extends Fragment {
+public class ParksFragment extends Fragment {
     RecyclerView rv;
-    HlAdapterTwo adapter;
+    ParksAdapter adapter;
 
     private static final String WORKING = "Parks";
     private static final String NOTWORKING = "ParksNotWorking";
@@ -42,7 +42,7 @@ public class NesadaFragment extends Fragment {
         View view = inflater.inflate(R.layout.nesada_service_fragment, container, false);
 
         rv = (RecyclerView) view.findViewById(R.id.recyclerview);
-        adapter = new HlAdapterTwo();
+        adapter = new ParksAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rv.setAdapter(adapter);
 

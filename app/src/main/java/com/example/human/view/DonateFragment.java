@@ -14,7 +14,7 @@ import com.example.human.R;
  * Created by Millochka on 1/27/17.
  */
 
-public class MilaFragment extends Fragment implements ViewGroup.OnClickListener {
+public class DonateFragment extends Fragment implements ViewGroup.OnClickListener {
 
     private static final String TARGET_URL ="MYURL" ;
     CardView mRedCross;

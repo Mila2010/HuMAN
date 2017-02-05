@@ -52,29 +52,15 @@ public class DMapsActivity extends AppCompatActivity implements OnMapReadyCallba
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
 
         LatLng hss = new LatLng(40.713958, -73.984515);
         mMap.addMarker(new MarkerOptions().position(hss).title("Marker for HSS"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(hss));
-//
-//        LatLng manhattan = new LatLng(40.722934,-73.974654);
-//        mMap.addMarker(new MarkerOptions().position(manhattan).title("Marker for moms"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(manhattan));
-
         Barcode.GeoPoint p1 = getLocationFromAddress("SFO");
 
         LatLng sydney = new LatLng(p1.lat, p1.lng);
@@ -124,10 +110,6 @@ public class DMapsActivity extends AppCompatActivity implements OnMapReadyCallba
                     userLocation.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation,
                     mMap.getMaxZoomLevel()-5));}
-        // LatLng loc = new LatLng (location.getLatitude(), location.getLongitude());
-//        map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
-        // Return false so that we don't consume the event and the default behavior still occurs
-        // (the camera animates to the user's current position).
         return true;
     }
 
@@ -135,15 +117,12 @@ public class DMapsActivity extends AppCompatActivity implements OnMapReadyCallba
     protected void onResumeFragments() {
         super.onResumeFragments();
         if (mPermissionDenied) {
-            // Permission was not granted, display error dialog.
             showMissingPermissionError();
             mPermissionDenied = false;
         }
     }
 
-    /**
-     * Displays a dialog with error message explaining that the location permission is missing.
-     */
+
     private void showMissingPermissionError() {
         PermissionUtils.PermissionDeniedDialog
                 .newInstance(true).show(getFragmentManager(), "dialog");

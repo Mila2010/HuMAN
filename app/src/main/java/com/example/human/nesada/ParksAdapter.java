@@ -17,22 +17,22 @@ import java.util.List;
  * Created by nesada on 1/29/17.
  */
 
-public class HlAdapterTwo extends RecyclerView.Adapter<HlViewHolderTwo> {
+public class ParksAdapter extends RecyclerView.Adapter<ParksViewHolder> {
 
     List<Parks> parksList;
 
-    public HlAdapterTwo(){
+    public ParksAdapter(){
         parksList = new ArrayList<>();
     }
 
     @Override
-    public HlViewHolderTwo onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ParksViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.parks_cardview,parent,false);
-        return new HlViewHolderTwo(view);
+        return new ParksViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(HlViewHolderTwo holder, int position) {
+    public void onBindViewHolder(ParksViewHolder holder, int position) {
             Parks parks = parksList.get(position);
         holder.bind(parks);
     }

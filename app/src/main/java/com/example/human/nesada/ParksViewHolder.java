@@ -17,7 +17,7 @@ import com.example.human.view.MapsActivity;
  * Created by nesada on 1/29/17.
  */
 
-public class HlViewHolderTwo extends RecyclerView.ViewHolder {
+public class ParksViewHolder extends RecyclerView.ViewHolder {
 
     private Context mContext;
 
@@ -26,7 +26,7 @@ public class HlViewHolderTwo extends RecyclerView.ViewHolder {
 
 
 
-    public HlViewHolderTwo(View itemView) {
+    public ParksViewHolder(View itemView) {
         super(itemView);
 
         mContext = itemView.getContext();

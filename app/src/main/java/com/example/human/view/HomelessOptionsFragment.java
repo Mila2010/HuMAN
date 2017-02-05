@@ -73,10 +73,6 @@ public class HomelessOptionsFragment extends Fragment {
                 // TODO Auto-generated method stub
 
                 filter(s.toString(), temp);
-//                adapter = new HlAdapter();
-//                rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-//                rv.setAdapter(adapter);
-
             }
 
             @Override
@@ -89,8 +85,6 @@ public class HomelessOptionsFragment extends Fragment {
             @Override
             public void afterTextChanged(Editable s) {
 
-                // filter your list from your input
-                //adapter.setSheltersList(temp);
 
             }
         });
@@ -114,8 +108,6 @@ public class HomelessOptionsFragment extends Fragment {
                     Log.d(WORKING, "It is working");
 
                     adapter.setSheltersList(shelterses);
-
-
 
 
                 }

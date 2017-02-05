@@ -4,9 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.human.view.DisabledFragment;
+import com.example.human.view.DonateFragment;
 import com.example.human.view.HomelessFragment;
-import com.example.human.view.MilaFragment;
-import com.example.human.view.NesadaFragment;
 
 /**
  * Created by Millochka on 1/27/17.
@@ -31,10 +31,10 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 HomelessFragment tab1 = new HomelessFragment();
                 return tab1;
             case 1:
-                NesadaFragment tab2 = new NesadaFragment();
+                DisabledFragment tab2 = new DisabledFragment();
                 return tab2;
             case 2:
-                MilaFragment tab3 = new MilaFragment();
+                DonateFragment tab3 = new DonateFragment();
                 return tab3;
             default:
                 return null;

@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.human.view.HomelessOptionsFragment;
 import com.example.human.view.MapsActivity;
+import com.example.human.view.ParksFragment;
 
 public class HomePage extends AppCompatActivity {
 
@@ -108,6 +109,16 @@ public class HomePage extends AppCompatActivity {
                         .replace(R.id.content_container, new HomelessOptionsFragment())
                         .addToBackStack(null)
                         .commit();
+                break;
+
+            case R.id.parks:
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.content_container, new ParksFragment())
+                        .addToBackStack(null)
+                        .commit();
+
                 break;
         }
 
