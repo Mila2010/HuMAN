@@ -28,11 +28,14 @@ import java.util.List;
 
 import static com.example.human.R.id.map;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback,
+/**
+ * Created by asiagibson on 2/4/17.
+ */
+
+public class DMapsActivity extends AppCompatActivity implements OnMapReadyCallback,
         GoogleMap.OnMyLocationButtonClickListener,
 
         ActivityCompat.OnRequestPermissionsResultCallback {
-
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private GoogleMap mMap;
@@ -62,58 +65,15 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        // Add a marker in Sydney and move the camera
 
         LatLng hss = new LatLng(40.713958, -73.984515);
-        mMap.addMarker(new MarkerOptions().position(hss).title("Henry St Shelter"));
+        mMap.addMarker(new MarkerOptions().position(hss).title("Marker for HSS"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(hss));
-
-        LatLng harlem = new LatLng(40.802994, -73.936658);
-        mMap.addMarker(new MarkerOptions().position(harlem).title("Harlem shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(harlem));
-
-        LatLng bx = new LatLng(40.840991, -73.891511);
-        mMap.addMarker(new MarkerOptions().position(bx).title("Cartona Park shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bx));
-
-        LatLng bxOneSixNine = new LatLng(40.833165, -73.906319);
-        mMap.addMarker(new MarkerOptions().position(bxOneSixNine).title("169th Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bxOneSixNine));
-
-        LatLng bxGrandC = new LatLng(40.832640, -73.918773);
-        mMap.addMarker(new MarkerOptions().position(bxGrandC).title("1130 Grand Concourse Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bxGrandC));
-
-        LatLng bxJackAve = new LatLng(40.815281, -73.907848);
-        mMap.addMarker(new MarkerOptions().position(bxJackAve).title("Bx Jackson Ave Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bxJackAve));
-
-        LatLng bxGrandC1780 = new LatLng(40.845951, -73.908942);
-        mMap.addMarker(new MarkerOptions().position(bxGrandC1780).title("1780 Grand Concourse Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bxGrandC1780));
-
-        LatLng bkEastPkwy = new LatLng(40.669348, -73.931318);
-        mMap.addMarker(new MarkerOptions().position(bkEastPkwy).title("East Pkwy Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bkEastPkwy));
-
-        LatLng bkFultonSt = new LatLng(40.678601, -73.920123);
-        mMap.addMarker(new MarkerOptions().position(bkFultonSt).title("Fulton St Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bkFultonSt));
-
-        LatLng bkBeaverSt = new LatLng(40.699906, -73.936715);
-        mMap.addMarker(new MarkerOptions().position(bkBeaverSt).title("Beaver St Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bkBeaverSt));
-
-        LatLng bkMyrtleAv = new LatLng(40.699183, -73.916797);
-        mMap.addMarker(new MarkerOptions().position(bkMyrtleAv).title("Myrtle Ave Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bkMyrtleAv));
-
-        LatLng bkE98 = new LatLng(40.663744, -73.921106);
-        mMap.addMarker(new MarkerOptions().position(bkE98).title("East 98th St Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bkE98));
-
-        LatLng bk3060Fulton = new LatLng(40.680656, -73.881692);
-        mMap.addMarker(new MarkerOptions().position(bk3060Fulton).title("Beaver St Shelter"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(bk3060Fulton));
+//
+//        LatLng manhattan = new LatLng(40.722934,-73.974654);
+//        mMap.addMarker(new MarkerOptions().position(manhattan).title("Marker for moms"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(manhattan));
 
         Barcode.GeoPoint p1 = getLocationFromAddress("SFO");
 
@@ -123,7 +83,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setOnMyLocationButtonClickListener(this);
         enableMyLocation();
     }
-
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
@@ -164,8 +123,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             myLocation = new LatLng(userLocation.getLatitude(),
                     userLocation.getLongitude());
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation,
-                    mMap.getMaxZoomLevel() - 5));
-        }
+                    mMap.getMaxZoomLevel()-5));}
         // LatLng loc = new LatLng (location.getLatitude(), location.getLongitude());
 //        map.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
         // Return false so that we don't consume the event and the default behavior still occurs
@@ -192,26 +150,27 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-    public Barcode.GeoPoint getLocationFromAddress(String strAddress) {
+    public Barcode.GeoPoint getLocationFromAddress(String strAddress){
 
         Geocoder coder = new Geocoder(this);
         List<Address> address;
         Barcode.GeoPoint p1 = null;
 
         try {
-            address = coder.getFromLocationName(strAddress, 5);
-            if (address == null) {
+            address = coder.getFromLocationName(strAddress,5);
+            if (address==null) {
                 return null;
             }
-            Address location = address.get(0);
+            Address location=address.get(0);
 
 
             location.getLongitude();
 
-            Double latitude = location.getLatitude() * 1E6;
-            Double longitude = location.getLongitude() * 1E6;
+            Double latitude = location.getLatitude()* 1E6;
+            Double  longitude = location.getLongitude() * 1E6;
 
-            p1 = new Barcode.GeoPoint(2, latitude, longitude);
+            p1 = new Barcode.GeoPoint(2,latitude,longitude);
+
 
 
         } catch (IOException e) {
@@ -229,4 +188,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
                 .addLocationRequest(mLocationRequest);
     }
+
+
 }
