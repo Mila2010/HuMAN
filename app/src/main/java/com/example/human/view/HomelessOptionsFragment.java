@@ -66,7 +66,7 @@ public class HomelessOptionsFragment extends Fragment {
         searchField = (EditText) view.findViewById(R.id.search_shelter);
         searchField.addTextChangedListener(new TextWatcher() {
 
-            final List<Shelters> temp = adapter.getSheltersList();
+             List<Shelters> temp = adapter.getSheltersList();
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
