@@ -3,6 +3,7 @@ package com.example.human.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
@@ -42,11 +43,13 @@ public class HomelessOptionsFragment extends Fragment {
     private Retrofit mRetrofit;
     private final String BASEURL = "https://data.cityofnewyork.us/";
     EditText searchField;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
 
 
 
@@ -63,6 +66,7 @@ public class HomelessOptionsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         searchField = (EditText) view.findViewById(R.id.search_shelter);
         searchField.addTextChangedListener(new TextWatcher() {
 
@@ -89,10 +93,54 @@ public class HomelessOptionsFragment extends Fragment {
             }
         });
 
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Refresh items
+                refreshItems();
+            }
+        });
+
+
 
         mRetrofit = new Retrofit.Builder().baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create()).build();
+        startRetrofit(mRetrofit);
 
-        ShelterResponse shelterResponse = mRetrofit.create(ShelterResponse.class);
+
+
+    }
+
+
+    public void filter(String text, List<Shelters> list){
+        final List<Shelters> temp = new ArrayList();
+        for(Shelters d: list){
+            if(d.getNeighborhood().toLowerCase().contains(text.toLowerCase())){
+                temp.add(d);
+            }
+        }
+        //update recyclerview
+        adapter.setSheltersList(temp);
+        adapter.updateList(temp);
+    }
+
+    public void refreshItems() {
+        startRetrofit(mRetrofit);
+        adapter.notifyDataSetChanged();
+        onItemsLoadComplete();
+
+    }
+
+    public void onItemsLoadComplete() {
+        // Update the adapter and notify data set changed
+        // ...
+
+        // Stop refresh animation
+        mSwipeRefreshLayout.setRefreshing(false);
+    }
+
+    public void startRetrofit(Retrofit retrofit){
+
+        ShelterResponse shelterResponse = retrofit.create(ShelterResponse.class);
 
         Call<List<Shelters>> call = shelterResponse.getShelters();
 
@@ -103,7 +151,7 @@ public class HomelessOptionsFragment extends Fragment {
                 if (response.isSuccessful()) {
 
 
-                     List<Shelters> shelterses = response.body();
+                    List<Shelters> shelterses = response.body();
 
                     Log.d(WORKING, "It is working");
 
@@ -123,19 +171,6 @@ public class HomelessOptionsFragment extends Fragment {
         });
 
 
-    }
-
-
-    public void filter(String text, List<Shelters> list){
-        final List<Shelters> temp = new ArrayList();
-        for(Shelters d: list){
-            if(d.getNeighborhood().toLowerCase().contains(text.toLowerCase())){
-                temp.add(d);
-            }
-        }
-        //update recyclerview
-        adapter.setSheltersList(temp);
-        adapter.updateList(temp);
     }
 
 
