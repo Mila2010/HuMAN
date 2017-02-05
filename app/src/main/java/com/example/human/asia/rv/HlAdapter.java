@@ -34,6 +34,12 @@ public class HlAdapter extends RecyclerView.Adapter<HlViewHolder> {
         Shelters shelters = sheltersList.get(position);
         holder.bind(shelters);
     }
+    public void updateList(List<Shelters> list){
+        sheltersList = list;
+        notifyDataSetChanged();
+    }
+
+
 
     @Override
     public int getItemCount() {
@@ -44,5 +50,10 @@ public class HlAdapter extends RecyclerView.Adapter<HlViewHolder> {
         sheltersList.clear();
         sheltersList.addAll(mshelterList);
         notifyDataSetChanged();
+    }
+
+
+    public List<Shelters> getSheltersList() {
+        return sheltersList;
     }
 }

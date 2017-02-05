@@ -37,7 +37,7 @@ public class HomePage extends AppCompatActivity {
 
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         mTabLayout.addTab(mTabLayout.newTab().setText("Help for Homeless"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Tab 2"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("Help for Disabled"));
         mTabLayout.addTab(mTabLayout.newTab().setText("Donate"));
         mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 

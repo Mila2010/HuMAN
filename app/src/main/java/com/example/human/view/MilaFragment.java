@@ -65,10 +65,6 @@ public class MilaFragment extends Fragment implements ViewGroup.OnClickListener 
         }
 
 
-
-
-
-
     }
 
     public void donate(String targetUrl){

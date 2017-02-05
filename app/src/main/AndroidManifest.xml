@@ -23,20 +23,23 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Splashscreen" />
+        <activity android:name=".Splashscreen" >
+
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+
+        </intent-filter>
+        </activity>
 
         <activity
             android:name=".HomePage"
-            android:theme="@style/TestTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
+            android:theme="@style/TestTheme"
+            android:windowSoftInputMode="adjustNothing"/>
 
 
-        </activity>
+
 
         <activity
             android:name=".view.MapsActivity"
