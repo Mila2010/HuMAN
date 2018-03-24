@@ -23,7 +23,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Splashscreen" >
+        <activity android:name=".SplashScreen" >
 
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,6 @@
             android:name=".HomePage"
             android:theme="@style/TestTheme"
             android:windowSoftInputMode="adjustNothing"/>
-
-
-
 
         <activity
             android:name=".view.MapsActivity"

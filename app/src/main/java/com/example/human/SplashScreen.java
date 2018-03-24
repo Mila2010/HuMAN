@@ -14,14 +14,18 @@ import android.widget.LinearLayout;
  * Created by Millochka on 1/26/17.
  */
 
-public class Splashscreen extends Activity {
+public class SplashScreen extends Activity {
+
+    Thread splashTread;
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
         window.setFormat(PixelFormat.RGBA_8888);
     }
-    /** Called when the activity is first created. */
-    Thread splashTread;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,15 +62,15 @@ public class Splashscreen extends Activity {
                         sleep(100);
                         waited += 100;
                     }
-                    Intent intent = new Intent(Splashscreen.this,
+                    Intent intent = new Intent(SplashScreen.this,
                             HomePage.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
-                    Splashscreen.this.finish();
+                    SplashScreen.this.finish();
                 } catch (InterruptedException e) {
 // do nothing
                 } finally {
-                    Splashscreen.this.finish();
+                    SplashScreen.this.finish();
                 }
             }
         };

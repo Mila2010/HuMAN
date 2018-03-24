@@ -148,7 +148,9 @@ public class DMapsActivity extends AppCompatActivity implements OnMapReadyCallba
             Double latitude = location.getLatitude()* 1E6;
             Double  longitude = location.getLongitude() * 1E6;
 
-            p1 = new Barcode.GeoPoint(2,latitude,longitude);
+            //p1 = new Barcode.GeoPoint(2,latitude,longitude);
+
+            p1 = new Barcode.GeoPoint();
 
 
 
