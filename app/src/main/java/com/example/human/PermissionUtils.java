@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human;
 
 import android.Manifest;
 import android.app.AlertDialog;

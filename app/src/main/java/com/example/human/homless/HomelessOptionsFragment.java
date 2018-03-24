@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human.homless;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.example.human.R;
-import com.example.human.asia.rv.HlAdapter;
 import com.example.human.model.Shelters;
 import com.example.human.network.ShelterResponse;
 
@@ -55,7 +54,7 @@ public class HomelessOptionsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.homeless_service_fragment, container, false);
 
-        rv = (RecyclerView) view.findViewById(R.id.recyclerview);
+        rv = view.findViewById(R.id.recyclerview);
         adapter = new HlAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rv.setAdapter(adapter);
@@ -66,8 +65,8 @@ public class HomelessOptionsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        mSearch=(SearchView) view.findViewById(R.id.search_shelter);
+        mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        mSearch=view.findViewById(R.id.search_shelter);
         mSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             List<Shelters> temp = adapter.getSheltersList();
@@ -83,32 +82,6 @@ public class HomelessOptionsFragment extends Fragment {
                 return true;
             }
         });
-
-//        searchField = (EditText) view.findViewById(R.id.search_shelter);
-//        searchField.addTextChangedListener(new TextWatcher() {
-//
-//             List<Shelters> temp = adapter.getSheltersList();
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                // TODO Auto-generated method stub
-//
-//                filter(s.toString(), temp);
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                // TODO Auto-generated method stub
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//
-//            }
-//        });
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

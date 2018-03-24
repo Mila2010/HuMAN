@@ -10,6 +10,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.human.home.HomePage;
+
 /**
  * Created by Millochka on 1/26/17.
  */

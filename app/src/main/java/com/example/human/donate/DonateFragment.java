@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human.donate;
 
 import android.content.Intent;
 import android.os.Bundle;

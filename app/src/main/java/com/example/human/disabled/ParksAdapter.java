@@ -1,4 +1,4 @@
-package com.example.human.nesada;
+package com.example.human.disabled;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

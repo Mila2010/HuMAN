@@ -1,12 +1,12 @@
-package com.example.human;
+package com.example.human.home;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.human.view.DisabledFragment;
-import com.example.human.view.DonateFragment;
-import com.example.human.view.HomelessFragment;
+import com.example.human.disabled.DisabledFragment;
+import com.example.human.donate.DonateFragment;
+import com.example.human.homless.HomelessFragment;
 
 /**
  * Created by Millochka on 1/27/17.

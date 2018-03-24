@@ -1,4 +1,4 @@
-package com.example.human;
+package com.example.human.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,14 +10,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.human.view.HomelessOptionsFragment;
-import com.example.human.view.MapsActivity;
-import com.example.human.view.ParksFragment;
+import com.example.human.ContactFragment;
+import com.example.human.R;
+import com.example.human.homless.HomelessOptionsFragment;
+import com.example.human.maps.MapsActivity;
+import com.example.human.disabled.ParksFragment;
 
 public class HomePage extends AppCompatActivity {
 
     TabLayout mTabLayout;
-    ContactUsFragment mContactUsFragment;
+    ContactFragment mContactFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,27 +28,28 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+
+
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mContactUsFragment = new ContactUsFragment();
+        mContactFragment = new ContactFragment();
 
-        mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        mTabLayout.addTab(mTabLayout.newTab().setText("Help for Homeless"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Help for Disabled"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("Donate"));
+        mTabLayout =  findViewById(R.id.tab_layout);
+        mTabLayout.addTab(mTabLayout.newTab().setText(getString(HomePageConstants.TITLE_HOMELESS)));
+        mTabLayout.addTab(mTabLayout.newTab().setText(getString(HomePageConstants.TITLE_DISABLED)));
+        mTabLayout.addTab(mTabLayout.newTab().setText(getString(HomePageConstants.TITLE_DONATE)));
         mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        viewPager.setOffscreenPageLimit(2);
+        final ViewPager viewPager = findViewById(R.id.pager);
         final PagerAdapter adapter = new PagerAdapter
                 (getSupportFragmentManager(), mTabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
-        mTabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -77,7 +80,7 @@ public class HomePage extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.contact_us:
-                getSupportFragmentManager().beginTransaction().add(R.id.activity_main, mContactUsFragment).commit();
+                getSupportFragmentManager().beginTransaction().add(R.id.activity_main, mContactFragment).commit();
 
                 break;
 
@@ -94,7 +97,7 @@ public class HomePage extends AppCompatActivity {
 
     public void removeContactUs(View view) {
 
-        getSupportFragmentManager().beginTransaction().remove(mContactUsFragment).commit();
+        getSupportFragmentManager().beginTransaction().remove(mContactFragment).commit();
 
     }
 

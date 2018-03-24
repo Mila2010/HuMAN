@@ -14,7 +14,7 @@ import android.widget.Toast;
 /**
  * Created by Millochka on 1/28/17.
  */
-public class ContactUsFragment extends Fragment implements ViewGroup.OnClickListener {
+public class ContactFragment extends Fragment implements ViewGroup.OnClickListener {
 
     Button mSendMessage;
     RelativeLayout mContactUsForm;

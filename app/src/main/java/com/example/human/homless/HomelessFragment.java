@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human.homless;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

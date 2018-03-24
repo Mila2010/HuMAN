@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human.disabled;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

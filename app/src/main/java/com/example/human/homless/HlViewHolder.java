@@ -1,4 +1,4 @@
-package com.example.human.asia.rv;
+package com.example.human.homless;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.human.R;
 import com.example.human.model.Shelters;
-import com.example.human.view.MapsActivity;
+import com.example.human.maps.MapsActivity;
 
 /**
  * Created by asiagibson on 1/29/17.

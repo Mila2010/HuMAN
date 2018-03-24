@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human.disabled;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.example.human.R;
 import com.example.human.model.Parks;
-import com.example.human.nesada.ParksAdapter;
 import com.example.human.network.ParksResponse;
 
 import java.util.List;
@@ -41,7 +40,7 @@ public class ParksFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.nesada_service_fragment, container, false);
 
-        rv = (RecyclerView) view.findViewById(R.id.recyclerview);
+        rv =  view.findViewById(R.id.recyclerview);
         adapter = new ParksAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rv.setAdapter(adapter);
@@ -65,12 +64,6 @@ public class ParksFragment extends Fragment {
             public void onResponse(Call<List<Parks>> call, Response<List<Parks>> response) {
                 if (response.isSuccessful()) {
                     List<Parks> parks = response.body();
-
-//                    try {
-//                        Log.d(WORKING, "WORKING"+ parks.string());
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
                     adapter.setParksList(parks);
 
                 }
@@ -90,14 +83,6 @@ public class ParksFragment extends Fragment {
 
 }
 
-
-//    @Override
-//    public View onCreateView(LayoutInflater inflater,
-//                             ViewGroup container, Bundle savedInstanceState) {
-//        View rootView = inflater.inflate(
-//                R.layout.nesada_service_fragment, container, false);
-//
-//        return rootView;
 
 
 
