@@ -9,8 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import com.example.human.home.HomePage;
+import com.example.human.home.PageNavigation;
 
 /**
  * Created by Millochka on 1/26/17.
@@ -42,13 +41,13 @@ public class SplashScreen extends Activity {
 
         Animation anim2=AnimationUtils.loadAnimation(this, R.anim.beta);
         anim2.reset();
-        LinearLayout l=(LinearLayout) findViewById(R.id.splash_screen);
+        LinearLayout l= findViewById(R.id.splash_screen);
         l.clearAnimation();
         l.startAnimation(anim);
         anim = AnimationUtils.loadAnimation(this, R.anim.translate);
         anim.reset();
-        ImageView iv = (ImageView) findViewById(R.id.profile_image);
-        ImageView tx=(ImageView) findViewById(R.id.app_name);
+        ImageView iv = findViewById(R.id.profile_image);
+        ImageView tx= findViewById(R.id.app_name);
         iv.clearAnimation();
         iv.startAnimation(anim);
         tx.clearAnimation();
@@ -65,7 +64,7 @@ public class SplashScreen extends Activity {
                         waited += 100;
                     }
                     Intent intent = new Intent(SplashScreen.this,
-                            HomePage.class);
+                            PageNavigation.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     SplashScreen.this.finish();

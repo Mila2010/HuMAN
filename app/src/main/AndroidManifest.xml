@@ -33,10 +33,8 @@
         </intent-filter>
         </activity>
 
-        <activity
-            android:name=".home.HomePage"
-            android:theme="@style/TestTheme"
-            android:windowSoftInputMode="adjustNothing"/>
+        <activity android:name=".home.PageNavigation"
+            android:theme="@style/TestTheme"/>
 
         <activity
             android:name=".maps.MapsActivity"

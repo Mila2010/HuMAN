@@ -2,13 +2,14 @@ package com.example.human.homless;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.human.R;
 
-public class HomelessFragment extends android.support.v4.app.Fragment {
+public class HomelessFragment extends Fragment {
 
 
     @Nullable
@@ -27,15 +28,7 @@ public class HomelessFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-
-            }
-
-
-
-
-
-
+    }
 }
 
 
