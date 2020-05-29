@@ -1,13 +1,13 @@
 package com.example.human.home
 
 import android.os.Bundle
-import android.support.design.widget.TabLayout
-import android.support.v4.view.ViewPager
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.viewpager.widget.ViewPager
 import com.example.human.ContactFragment
 import com.example.human.R
+import com.google.android.material.tabs.TabLayout
 
 
 /**
@@ -37,7 +37,20 @@ class PageNavigation : AppCompatActivity() {
         val viewPager : ViewPager = findViewById(R.id.pager)
         val adapter = NavigationAdapter(supportFragmentManager, mNavigationTabs.getTabCount())
         viewPager.adapter = adapter;
-        viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(mNavigationTabs))
+        viewPager.addOnPageChangeListener(object: ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onPageSelected(position: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        })
 
         mNavigationTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 

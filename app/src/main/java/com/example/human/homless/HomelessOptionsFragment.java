@@ -1,17 +1,12 @@
 package com.example.human.homless;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.example.human.R;
 import com.example.human.model.Shelters;
@@ -20,6 +15,11 @@ import com.example.human.network.ShelterResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomelessOptionsFragment extends Fragment {
     RecyclerView rv;
-    HlAdapter adapter;
+    HomelessAdapter adapter;
 
     private static final String WORKING = "Hemless";
     private static final String NOTWORKING = "HomlessNotWorking";
@@ -55,7 +55,7 @@ public class HomelessOptionsFragment extends Fragment {
         View view = inflater.inflate(R.layout.homeless_service_fragment, container, false);
 
         rv = view.findViewById(R.id.recyclerview);
-        adapter = new HlAdapter();
+        adapter = new HomelessAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rv.setAdapter(adapter);
 
@@ -110,7 +110,6 @@ public class HomelessOptionsFragment extends Fragment {
         }
         //update recyclerview
         adapter.setSheltersList(temp);
-        adapter.updateList(temp);
     }
 
     public void refreshItems() {
