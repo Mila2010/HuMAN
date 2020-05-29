@@ -43,7 +43,7 @@
             android:label="@string/title_activity_maps" />
 
 
-        <activity android:name=".donate.DonateWebView" />
+        <activity android:name=".donate.DonateWebViewActivity" />
 
         <activity android:name=".maps.DMapsActivity"/>
 
