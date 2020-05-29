@@ -16,7 +16,7 @@
     android:layout_marginTop="50dp"
     android:layout_marginLeft="20dp">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/drop_ins"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -40,9 +40,9 @@
         </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/family_shelters"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -65,7 +65,7 @@
         </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
 
@@ -75,7 +75,7 @@
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp">
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/runaways"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -100,9 +100,9 @@
         </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/lgbtq"
         android:layout_width="150dp"
         android:layout_height="150dp"
@@ -129,7 +129,7 @@
         </LinearLayout>
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 </LinearLayout>

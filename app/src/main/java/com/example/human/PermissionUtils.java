@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -7,9 +7,9 @@ import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 /**
  * Created by Millochka on 1/31/17.

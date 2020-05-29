@@ -9,19 +9,24 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import com.example.human.home.PageNavigation;
 
 /**
  * Created by Millochka on 1/26/17.
  */
 
-public class Splashscreen extends Activity {
+public class SplashScreen extends Activity {
+
+    Thread splashTread;
+
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
         Window window = getWindow();
         window.setFormat(PixelFormat.RGBA_8888);
     }
-    /** Called when the activity is first created. */
-    Thread splashTread;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +41,13 @@ public class Splashscreen extends Activity {
 
         Animation anim2=AnimationUtils.loadAnimation(this, R.anim.beta);
         anim2.reset();
-        LinearLayout l=(LinearLayout) findViewById(R.id.splash_screen);
+        LinearLayout l= findViewById(R.id.splash_screen);
         l.clearAnimation();
         l.startAnimation(anim);
         anim = AnimationUtils.loadAnimation(this, R.anim.translate);
         anim.reset();
-        ImageView iv = (ImageView) findViewById(R.id.profile_image);
-        ImageView tx=(ImageView) findViewById(R.id.app_name);
+        ImageView iv = findViewById(R.id.profile_image);
+        ImageView tx= findViewById(R.id.app_name);
         iv.clearAnimation();
         iv.startAnimation(anim);
         tx.clearAnimation();
@@ -58,15 +63,15 @@ public class Splashscreen extends Activity {
                         sleep(100);
                         waited += 100;
                     }
-                    Intent intent = new Intent(Splashscreen.this,
-                            HomePage.class);
+                    Intent intent = new Intent(SplashScreen.this,
+                            PageNavigation.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
-                    Splashscreen.this.finish();
+                    SplashScreen.this.finish();
                 } catch (InterruptedException e) {
 // do nothing
                 } finally {
-                    Splashscreen.this.finish();
+                    SplashScreen.this.finish();
                 }
             }
         };

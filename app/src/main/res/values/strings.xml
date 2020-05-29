@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">HuMAN</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_donate">Donate</string>
+    <string name="title_homless">Help Homeless</string>
+    <string name="title_disabled">Help Disabled</string>
 </resources>

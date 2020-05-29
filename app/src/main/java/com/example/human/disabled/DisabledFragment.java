@@ -1,12 +1,13 @@
-package com.example.human.view;
+package com.example.human.disabled;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.human.R;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * Created by Millochka on 2/5/17.

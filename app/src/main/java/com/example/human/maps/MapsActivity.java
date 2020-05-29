@@ -1,4 +1,4 @@
-package com.example.human.view;
+package com.example.human.maps;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -6,15 +6,10 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.human.R;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationSettingsRequest;
+import com.example.human.PermissionUtils;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,6 +20,11 @@ import com.google.android.gms.vision.barcode.Barcode;
 
 import java.io.IOException;
 import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import static com.example.human.R.id.map;
 
@@ -211,7 +211,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             Double latitude = location.getLatitude() * 1E6;
             Double longitude = location.getLongitude() * 1E6;
 
-            p1 = new Barcode.GeoPoint(2, latitude, longitude);
+            //p1 = new Barcode.GeoPoint(2, latitude, longitude);
+            p1 = new Barcode.GeoPoint();
 
 
         } catch (IOException e) {
@@ -221,12 +222,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
-    protected void createLocationRequest() {
-        LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setInterval(10000);
-        mLocationRequest.setFastestInterval(5000);
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-                .addLocationRequest(mLocationRequest);
-    }
+//    protected void createLocationRequest() {
+//        LocationRequest mLocationRequest = new LocationRequest();
+//        mLocationRequest.setInterval(10000);
+//        mLocationRequest.setFastestInterval(5000);
+//        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+//        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+//                .addLocationRequest(mLocationRequest);
+//    }
 }

@@ -1,26 +1,25 @@
-package com.example.human.view;
+package com.example.human.homless;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.example.human.R;
-import com.example.human.asia.rv.HlAdapter;
 import com.example.human.model.Shelters;
 import com.example.human.network.ShelterResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HomelessOptionsFragment extends Fragment {
     RecyclerView rv;
-    HlAdapter adapter;
+    HomelessAdapter adapter;
 
     private static final String WORKING = "Hemless";
     private static final String NOTWORKING = "HomlessNotWorking";
@@ -55,8 +54,8 @@ public class HomelessOptionsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.homeless_service_fragment, container, false);
 
-        rv = (RecyclerView) view.findViewById(R.id.recyclerview);
-        adapter = new HlAdapter();
+        rv = view.findViewById(R.id.recyclerview);
+        adapter = new HomelessAdapter();
         rv.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         rv.setAdapter(adapter);
 
@@ -66,8 +65,8 @@ public class HomelessOptionsFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
-        mSearch=(SearchView) view.findViewById(R.id.search_shelter);
+        mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        mSearch=view.findViewById(R.id.search_shelter);
         mSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             List<Shelters> temp = adapter.getSheltersList();
@@ -83,32 +82,6 @@ public class HomelessOptionsFragment extends Fragment {
                 return true;
             }
         });
-
-//        searchField = (EditText) view.findViewById(R.id.search_shelter);
-//        searchField.addTextChangedListener(new TextWatcher() {
-//
-//             List<Shelters> temp = adapter.getSheltersList();
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//
-//                // TODO Auto-generated method stub
-//
-//                filter(s.toString(), temp);
-//            }
-//
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//                // TODO Auto-generated method stub
-//
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//
-//            }
-//        });
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -137,7 +110,6 @@ public class HomelessOptionsFragment extends Fragment {
         }
         //update recyclerview
         adapter.setSheltersList(temp);
-        adapter.updateList(temp);
     }
 
     public void refreshItems() {

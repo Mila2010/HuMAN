@@ -1,16 +1,16 @@
-package com.example.human.nesada;
+package com.example.human.disabled;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.human.R;
 import com.example.human.model.Parks;
-import com.example.human.view.DMapsActivity;
-import com.example.human.view.MapsActivity;
+import com.example.human.maps.DMapsActivity;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 
 /**

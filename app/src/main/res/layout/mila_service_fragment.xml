@@ -13,7 +13,7 @@
     android:theme="@style/TestTheme">
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/red_cross"
         android:layout_width="250dp"
         android:layout_height="130dp"
@@ -25,11 +25,10 @@
             android:src="@drawable/redcross"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            app:cardCornerRadius="20dp"/>
-    </android.support.v7.widget.CardView>
+            android:scaleType="fitXY"/>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/colation_for_homeless"
         android:layout_marginTop="20dp"
         android:layout_width="250dp"
@@ -41,11 +40,10 @@
             android:src="@drawable/col_for_homeless"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            app:cardCornerRadius="20dp"/>
+            android:scaleType="fitXY"/>
 
-    </android.support.v7.widget.CardView>
-    <android.support.v7.widget.CardView
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
         android:id="@+id/veteran_donation"
         android:layout_marginTop="20dp"
         android:layout_width="250dp"
@@ -56,9 +54,8 @@
             android:src="@drawable/veterans"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"
-            app:cardCornerRadius="20dp"/>
+            android:scaleType="fitXY"/>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
     </ScrollView>
