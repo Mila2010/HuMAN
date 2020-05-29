@@ -2,6 +2,7 @@ package com.example.human.home;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.human.disabled.DisabledFragment;
@@ -11,10 +12,10 @@ import com.example.human.homless.HomelessFragment;
 /**
  * Created by Millochka on 1/27/17.
  */
-public class PagerAdapter extends FragmentStatePagerAdapter {
+public class PagerAdapter extends FragmentPagerAdapter {
 
 
-    int mNumOfTabs;
+    private int mNumOfTabs;
 
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
         super(fm);
