@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.human">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -17,7 +18,8 @@
         android:icon="@drawable/s_third_logo"
         android:label="HuMAN"
         android:supportsRtl="true"
-        android:theme="@style/HuMANTheme">
+        android:theme="@style/HuMANTheme"
+        tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -33,7 +35,7 @@
         </intent-filter>
         </activity>
 
-        <activity android:name=".home.PageNavigation"
+        <activity android:name=".home.HomeActivity"
             android:theme="@style/TestTheme"/>
 
         <activity
@@ -42,6 +44,8 @@
 
 
         <activity android:name=".donate.DonateWebView" />
+
+        <activity android:name=".maps.DMapsActivity"/>
 
 
     </application>
