@@ -1,19 +1,17 @@
 package com.example.human.home
 
 import android.os.Bundle
-
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
 import com.example.human.ContactFragment
 import com.example.human.R
+import com.example.human.disabled.ParksFragment
+import com.example.human.homless.HomelessOptionsFragment
 import com.google.android.material.tabs.TabLayout
 
-
-/**
- * Created by mila on 3/23/18.
- */
-class PageNavigation : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
     lateinit var mNavigationTabs: TabLayout
     lateinit var mContactFragment: ContactFragment
@@ -56,4 +54,19 @@ class PageNavigation : AppCompatActivity() {
 
         })
     }
+    fun showDetails(view: View) {
+        when (view.id) {
+            R.id.family_shelters -> supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_container, HomelessOptionsFragment())
+                    .addToBackStack(null)
+                    .commit()
+            R.id.parks -> supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.content_container, ParksFragment())
+                    .addToBackStack(null)
+                    .commit()
+        }
+    }
+
 }

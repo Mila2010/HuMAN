@@ -9,7 +9,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.example.human.home.PageNavigation;
+
+import com.example.human.home.HomeActivity;
 
 /**
  * Created by Millochka on 1/26/17.
@@ -64,7 +65,7 @@ public class SplashScreen extends Activity {
                         waited += 100;
                     }
                     Intent intent = new Intent(SplashScreen.this,
-                            PageNavigation.class);
+                            HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                     SplashScreen.this.finish();
